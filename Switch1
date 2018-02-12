@@ -1,0 +1,209 @@
+Current configuration : 2321 bytes
+!
+version 12.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname Switch1
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$pSok$kVdRd807/I1dJL0zbGGOk0
+!
+username cisco password 7 05080F1C2243
+no aaa new-model
+system mtu routing 1500
+vtp domain cisco
+vtp mode transparent
+ip subnet-zero
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+vlan 11
+ name 11
+!
+vlan 12
+ name 12
+!
+vlan 13
+ name 13
+!
+vlan 14
+ name 14
+!
+vlan 21
+ name 21
+!
+vlan 22
+ name 22
+!
+vlan 23
+ name 23
+!
+vlan 24
+ name 24
+!
+vlan 31
+ name 31
+!
+vlan 32
+ name 32
+!
+vlan 33
+ name 33
+!
+vlan 34
+ name 34
+!
+vlan 41
+ name 41
+!
+vlan 42
+ name 42
+!
+vlan 43
+ name 43
+!
+vlan 44
+ name 44
+!
+vlan 50
+ name 50
+!
+vlan 101
+ name Wireless_A
+!
+vlan 102
+ name Wireless_B
+!
+vlan 103
+ name Wireless_C
+!
+vlan 104
+ name Wireless_D
+!
+vlan 105
+ name Wired_A
+!
+vlan 106
+ name Wired_B
+!
+vlan 107
+ name Servidores
+!
+vlan 108
+ name Admin_Switches
+!
+vlan 109
+ name Admin_Wireless
+!
+vlan 110
+ name Interconexion
+!
+vlan 511
+ name vlan511
+!
+vlan 512
+ name vlan512
+!
+vlan 513
+ name vlan513
+!
+vlan 514
+ name vlan514
+!
+vlan 515
+ name vlan515
+!
+vlan 700
+ name prueba
+!
+!
+!
+interface FastEthernet0/1
+!
+interface FastEthernet0/2
+!
+interface FastEthernet0/3
+!
+interface FastEthernet0/4
+!
+interface FastEthernet0/5
+!
+interface FastEthernet0/6
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface FastEthernet0/13
+!
+interface FastEthernet0/14
+!
+interface FastEthernet0/15
+!
+interface FastEthernet0/16
+!
+interface FastEthernet0/17
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ ip address 172.18.161.253 255.255.254.0
+ no ip route-cache
+!
+ip default-gateway 172.18.161.254
+ip http server
+ip http secure-server
+!
+control-plane
+!
+banner motd ^C-----Bienvenido al Switch1 Equipo:Los rudos------^C
+!
+line con 0
+ login local
+line vty 0 4
+ login local
+line vty 5 15
+ login local
+!
+end
