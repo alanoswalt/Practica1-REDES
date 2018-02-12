@@ -1,0 +1,137 @@
+Current configuration : 2180 bytes
+!
+! Last configuration change at 17:17:25 UTC Thu Feb 8 2018
+! NVRAM config last updated at 17:33:33 UTC Thu Feb 8 2018
+! NVRAM config last updated at 17:33:33 UTC Thu Feb 8 2018
+version 15.1
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname Router2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 4 tnhtc92DXBhelxjYk8LWJrPV36S2i4ntXrpb4RFmfqY
+!
+no aaa new-model
+!
+no ipv6 cef
+ip source-route
+ip cef
+!
+!
+!
+!
+!
+ip domain name labredes.com
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+crypto pki token default removal timeout 0
+!
+!
+voice-card 0
+!
+!
+!
+!
+!
+!
+!
+license udi pid CISCO2901/K9 sn FTX161687X1
+license boot module c2900 technology-package uck9
+!
+!
+username cisco password 7 14141B180F0B
+!
+redundancy
+!
+!
+ip ssh version 2
+!
+!
+!
+!
+interface Loopback0
+ ip address 172.18.169.62 255.255.255.224
+!
+interface Embedded-Service-Engine0/0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0/0
+ ip address 172.18.168.9 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+interface Serial0/0/0
+ ip address 172.18.168.6 255.255.255.252
+ clock rate 2000000
+!
+interface Serial0/0/1
+ ip address 172.18.168.2 255.255.255.252
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+ip route 172.18.160.0 255.255.252.0 172.18.168.1 10
+ip route 172.18.160.0 255.255.252.0 172.18.168.5 10
+ip route 172.18.164.0 255.255.252.0 172.18.168.10
+ip route 172.18.169.0 255.255.255.224 172.18.168.1 10
+ip route 172.18.169.0 255.255.255.224 172.18.168.5 10
+ip route 172.18.169.64 255.255.255.224 172.18.168.10
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+mgcp profile default
+!
+!
+!
+!
+!
+gatekeeper
+ shutdown
+!
+!
+banner motd ^C----------Bienvenido al Router2-Equipo: Los Rudos! Acceso Restringido----------^C
+!
+line con 0
+ password 7 02050D480809
+ login
+line aux 0
+line 2
+ no activation-character
+ no exec
+ transport preferred none
+ transport input all
+ transport output pad telnet rlogin lapb-ta mop udptn v120 ssh
+ stopbits 1
+line vty 0 4
+ login local
+ transport input all
+line vty 5 15
+ login local
+ transport input all
+!
+scheduler allocate 20000 1000
+end
