@@ -1,0 +1,142 @@
+Current configuration : 2002 bytes
+!
+! Last configuration change at 17:14:16 UTC Mon Feb 12 2018 by cisco
+version 15.1
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname Router1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 4 tnhtc92DXBhelxjYk8LWJrPV36S2i4ntXrpb4RFmfqY
+!
+no aaa new-model
+!
+ipv6 unicast-routing
+ipv6 cef
+ip source-route
+ip cef
+!
+!
+!
+!
+!
+ip domain name labredes.com
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+crypto pki token default removal timeout 0
+!
+!
+voice-card 0
+!
+!
+!
+!
+!
+!
+!
+license udi pid CISCO2901/K9 sn FTX161687X4
+license boot module c2900 technology-package uck9
+hw-module pvdm 0/0
+!
+!
+!
+vtp mode client
+username cisco password 7 1511021F0725
+!
+redundancy
+!
+!
+ip ssh version 2
+!
+!
+!
+!
+interface Loopback0
+ no ip address
+ ipv6 address 2001:DB8:3:6::1/64
+!
+interface Embedded-Service-Engine0/0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0/0
+ description Acceso a LAN-1
+ no ip address
+ duplex auto
+ speed auto
+ ipv6 address 2001:DB8:3::1/64
+!
+interface GigabitEthernet0/1
+ description Acceso a LAN-2
+ no ip address
+ duplex auto
+ speed auto
+ ipv6 address 2001:DB8:3:1::1/64
+!
+interface Serial0/0/0
+ description Acceso a WAN-1
+ no ip address
+ ipv6 address 2001:DB8:3:3::1/64
+ no fair-queue
+!
+interface Serial0/0/1
+ description Acceso a WAN-2
+ no ip address
+ ipv6 address 2001:DB8:3:4::1/64
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+ipv6 route ::/6 2001:DB8:3:3::2 5
+ipv6 route ::/0 2001:DB8:3:4::2 10
+!
+!
+!
+control-plane
+!
+!
+!
+!
+mgcp profile default
+!
+!
+!
+!
+!
+gatekeeper
+ shutdown
+!
+!
+banner motd ^C----------Estas entrando al Router 1 Equipo: Los Rudos----------^C
+!
+line con 0
+ login local
+line aux 0
+line 2
+ no activation-character
+ no exec
+ transport preferred none
+ transport input all
+ transport output pad telnet rlogin lapb-ta mop udptn v120 ssh
+ stopbits 1
+line vty 0 4
+ login local
+ transport input all
+line vty 5 15
+ login local
+ transport input all
+!
+scheduler allocate 20000 1000
+end
